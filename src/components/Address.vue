@@ -123,34 +123,39 @@
         >
         <el-input v-model.number='pop_address.contacts_phone' auto-complete='off'></el-input>
       </el-form-item>
-      <el-form-item :label='props.area.label' :label-width='`120px`'>
+      <el-form-item 
+        :label='props.area.label' 
+        :label-width='`120px`'
+        prop="area"
+        v-if='props.area.display'
+        :rules="[
+          { required: props.area.required, message: props.area.error_message }
+        ]">
         <el-cascader
           :options='addressSets'
           change-on-select
           :props="{ value: 'name', label: 'name'}"
-          prop="area"
-          v-if='props.area.display'
-          :rules="[
-            { required: props.area.required, message: props.area.error_message }
-          ]"
           v-model='pop_address.area'
         ></el-cascader>
       </el-form-item>
-      <el-form-item :label='props.details.label' :label-width='`120px`'>
+      <el-form-item 
+        :label='props.details.label' 
+        :label-width='`120px`'
+        v-if='props.details.display'
+        prop="details"
+        :rules="[
+          { required: props.area.required, message: props.area.error_message }
+        ]">
         <el-input type='textarea' 
           v-model='pop_address.details' 
           auto-complete='off'
-          v-if='props.details.display'
-          prop="details"
-          :rules="[
-            { required: props.area.required, message: props.area.error_message }
-          ]"></el-input>
+          ></el-input>
       </el-form-item>
       <el-form-item 
       :label='props.zip_code.label' 
       :label-width='`120px`'
       :rules="[
-            { required: props.zip_code.required, message: props.zip_code.error_message }
+          { required: props.zip_code.required, message: props.zip_code.error_message }
       ]"
       prop="zip_code" 
       v-if='props.zip_code.display'>
@@ -175,7 +180,7 @@
         ]" 
         v-if='props.tag.display'>
         <div class='tag-list'>
-          <el-radio v-model='pop_address.tag' :label='t' :key='i' v-for='(t, i) in props.tag.options' border>{{ t }}</el-radio>
+          <el-radio v-model='pop_address.tag' auto-complete='off' :label='t' :key='i' v-for='(t, i) in props.tag.options' border>{{ t }}</el-radio>
         </div>
       </el-form-item>
     </el-form>

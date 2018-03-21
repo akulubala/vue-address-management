@@ -326,6 +326,11 @@ module.exports = !__webpack_require__(1)(function () {
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3429,25 +3434,28 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "el-form-item",
-                {
-                  attrs: { label: _vm.props.area.label, "label-width": "120px" }
-                },
-                [
-                  _vm.props.area.display
-                    ? _c("el-cascader", {
+              _vm.props.area.display
+                ? _c(
+                    "el-form-item",
+                    {
+                      attrs: {
+                        label: _vm.props.area.label,
+                        "label-width": "120px",
+                        prop: "area",
+                        rules: [
+                          {
+                            required: _vm.props.area.required,
+                            message: _vm.props.area.error_message
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("el-cascader", {
                         attrs: {
                           options: _vm.addressSets,
                           "change-on-select": "",
-                          props: { value: "name", label: "name" },
-                          prop: "area",
-                          rules: [
-                            {
-                              required: _vm.props.area.required,
-                              message: _vm.props.area.error_message
-                            }
-                          ]
+                          props: { value: "name", label: "name" }
                         },
                         model: {
                           value: _vm.pop_address.area,
@@ -3457,33 +3465,30 @@ var render = function() {
                           expression: "pop_address.area"
                         }
                       })
-                    : _vm._e()
-                ],
-                1
-              ),
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "el-form-item",
-                {
-                  attrs: {
-                    label: _vm.props.details.label,
-                    "label-width": "120px"
-                  }
-                },
-                [
-                  _vm.props.details.display
-                    ? _c("el-input", {
-                        attrs: {
-                          type: "textarea",
-                          "auto-complete": "off",
-                          prop: "details",
-                          rules: [
-                            {
-                              required: _vm.props.area.required,
-                              message: _vm.props.area.error_message
-                            }
-                          ]
-                        },
+              _vm.props.details.display
+                ? _c(
+                    "el-form-item",
+                    {
+                      attrs: {
+                        label: _vm.props.details.label,
+                        "label-width": "120px",
+                        prop: "details",
+                        rules: [
+                          {
+                            required: _vm.props.area.required,
+                            message: _vm.props.area.error_message
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("el-input", {
+                        attrs: { type: "textarea", "auto-complete": "off" },
                         model: {
                           value: _vm.pop_address.details,
                           callback: function($$v) {
@@ -3492,10 +3497,10 @@ var render = function() {
                           expression: "pop_address.details"
                         }
                       })
-                    : _vm._e()
-                ],
-                1
-              ),
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm.props.zip_code.display
                 ? _c(
@@ -3587,7 +3592,11 @@ var render = function() {
                             "el-radio",
                             {
                               key: i,
-                              attrs: { label: t, border: "" },
+                              attrs: {
+                                "auto-complete": "off",
+                                label: t,
+                                border: ""
+                              },
                               model: {
                                 value: _vm.pop_address.tag,
                                 callback: function($$v) {

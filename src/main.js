@@ -23,8 +23,8 @@ import {
 Vue.use(Cascader);
 Vue.use(Select);
 Vue.use(Option);
-Vue.use(Message);
-Vue.use(MessageBox);
+// Vue.use(Message);
+// Vue.use(MessageBox);
 Vue.use(Checkbox);
 Vue.use(Table);
 Vue.use(TableColumn);
@@ -47,3 +47,6 @@ new Vue({
   components: { App },
   template: "<App/>"
 });
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$message = Message;
