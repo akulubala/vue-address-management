@@ -4,7 +4,7 @@
   "main": "dist/app.js",
   "description": "Chinese Address Once for All",
   "author": "Raymond Cheng <akulubala@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
