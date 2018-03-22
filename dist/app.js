@@ -347,7 +347,7 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
     return {
       pop_address: {
         contacts: null,
-        contact_phone: null,
+        contacts_phone: null,
         area: [],
         details: null,
         zip_code: null
@@ -485,15 +485,6 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
           return false;
         }
       });
-      // let isCreate = !Object.keys(this.pop_address).includes("id");
-      /**
-      判断是否是创建地址
-      */
-      // if (isCreate) {
-      //   this.$emit('storeAddress', this.pop_address);
-      // } else {
-      //   this.$emit('updateAddress', this.pop_address);
-      // }
     },
     tableRowClassName: function tableRowClassName(_ref) {
       var row = _ref.row,

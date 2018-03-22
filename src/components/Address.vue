@@ -207,7 +207,7 @@ export default {
     return {
       pop_address: {
         contacts: null,
-        contact_phone: null,
+        contacts_phone: null,
         area: [],
         details: null,
         zip_code: null,
@@ -288,7 +288,7 @@ export default {
             mutatedProps[key] = Object.assign({}, baseProp);
           }
         } else {
-              mutatedProps[key] = Object.assign({}, element);
+            mutatedProps[key] = Object.assign({}, element);
         }
       }
     }
@@ -342,18 +342,10 @@ export default {
           return false;
         }
       });
-      // let isCreate = !Object.keys(this.pop_address).includes("id");
-      /**
-      判断是否是创建地址
-      */
-      // if (isCreate) {
-      //   this.$emit('storeAddress', this.pop_address);
-      // } else {
-      //   this.$emit('updateAddress', this.pop_address);
-      // }
     },
     tableRowClassName({ row, rowIndex }) {
-      if (row.id === this.selected_address.id) {
+      
+      if (this.selected_address && row.id === this.selected_address.id) {
         return "selected-address";
       }
       return "";

@@ -83,22 +83,27 @@ export default {
         });
     },
     updateAddress(address) {
-      axios
-        .put('/order-address/' + this.pop_address.id, this.pop_address)
-        .then(resp => {
+      /**@augments
+       * let mutedAddress = this.mixinUpdateAddress(this.addressOptions.customer_address_list, address);
+       * this part must outside async request, I believe there have something related with vue mixins
+       */
+      // axios
+      //   .put('/order-address/' + this.pop_address.id, this.pop_address)
+      //   .then(resp => {
+          let mutedAddress = this.mixinUpdateAddress(this.addressOptions.customer_address_list, address);
           this.addressOptions.customer_address_list = Object.assign(
             [],
-            this.mixinUpdateAddress(this.addressOptions.customer_address_list, address)
+            mutedAddress
           );
-        })
-        .then(() => {
-          this.pop_address_visible = false;
-          this.$message({
-            type: 'success',
-            showClose: true,
-            message: '更新地址成功!'
-          });
-        });
+        // })
+        // .then(() => {
+        //   this.pop_address_visible = false;
+        //   this.$message({
+        //     type: 'success',
+        //     showClose: true,
+        //     message: '更新地址成功!'
+        //   });
+        // });
     },
     deleteAddress(address) {
       this.addressOptions.customer_address_list = Object.assign(
