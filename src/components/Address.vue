@@ -222,7 +222,18 @@ export default {
   },
   created() {
     if (this.baseAddressOptions.customer_address_list.length > 0) {
-      this.selected_address = Object.assign({}, this.baseAddressOptions.customer_address_list[0]);
+      let selectedAddress = null;
+      for (let index = 0; index < this.baseAddressOptions.customer_address_list.length; index++) {
+        const element = this.baseAddressOptions.customer_address_list[index];
+        if (element.is_default) {
+          selectedAddress = element;
+          break;
+        }
+      }
+      if (!selectedAddress) {
+        selectedAddress = this.baseAddressOptions.customer_address_list[0];
+      }
+      this.selected_address = Object.assign({}, selectedAddress);
     }
     let mutatedProps = {};
     let baseProps = null;

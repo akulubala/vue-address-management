@@ -362,7 +362,18 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
   },
   created: function created() {
     if (this.baseAddressOptions.customer_address_list.length > 0) {
-      this.selected_address = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, this.baseAddressOptions.customer_address_list[0]);
+      var selectedAddress = null;
+      for (var index = 0; index < this.baseAddressOptions.customer_address_list.length; index++) {
+        var element = this.baseAddressOptions.customer_address_list[index];
+        if (element.is_default) {
+          selectedAddress = element;
+          break;
+        }
+      }
+      if (!selectedAddress) {
+        selectedAddress = this.baseAddressOptions.customer_address_list[0];
+      }
+      this.selected_address = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, selectedAddress);
     }
     var mutatedProps = {};
     var baseProps = null;
@@ -418,7 +429,7 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
 
     for (var key in defaultProps) {
       if (defaultProps.hasOwnProperty(key)) {
-        var element = defaultProps[key];
+        var _element = defaultProps[key];
         if (baseProps && baseProps.hasOwnProperty(key)) {
           var baseProp = baseProps[key];
           if (baseProp.required && !baseProp.display) {
@@ -428,7 +439,7 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
             mutatedProps[key] = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, baseProp);
           }
         } else {
-          mutatedProps[key] = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, element);
+          mutatedProps[key] = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, _element);
         }
       }
     }
@@ -490,7 +501,8 @@ var adressPca = __WEBPACK_IMPORTED_MODULE_3__assets_pca_code__["a" /* default */
       var row = _ref.row,
           rowIndex = _ref.rowIndex;
 
-      if (row.id === this.selected_address.id) {
+
+      if (this.selected_address && row.id === this.selected_address.id) {
         return "selected-address";
       }
       return "";
