@@ -1,6 +1,6 @@
 {
   "name": "vue-address-cn",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/app.js",
   "description": "Chinese Address Once for All",
   "author": "Raymond Cheng <akulubala@gmail.com>",
